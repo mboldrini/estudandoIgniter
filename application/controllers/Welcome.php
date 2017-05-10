@@ -24,7 +24,7 @@ class Welcome extends CI_Controller {
 	}
 
 	public function cadastro()	{
-		$this->load->view('teste');
+		$this->load->view('painel');
 	}
 
 }

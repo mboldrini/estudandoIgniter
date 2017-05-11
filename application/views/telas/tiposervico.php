@@ -12,10 +12,15 @@
 
     echo form_open();
 
-
-
   ?>
 
+<?php 
+  if( $mensagem ){
+    echo '<div class="alert '.$mensagem[1].' alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  '.$mensagem[0].'</div>';
+  }
+?>
 
   <div class="form-group">
     <?php echo form_label('Serviço:', 'servico'); ?>
@@ -43,7 +48,7 @@
   <div class="form-group">
     <?php echo form_label('Data de Cadastro:', 'date'); ?>
     <?php date_default_timezone_set('America/Sao_Paulo'); $date = date('d-m-Y'); ?>
-    <?php echo form_input('data', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required' ) ); ?>
+    <?php echo form_input('data', $date ,array( 'class'=>'form-control col-md-3' ) ); ?>
   </div>
 
   <div class="form-group">

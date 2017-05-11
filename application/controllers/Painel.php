@@ -73,6 +73,7 @@ class Painel extends CI_Controller {
 			redirect(base_url().'login');
 		}
 
+		$mensagem = [];
 
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
@@ -87,10 +88,12 @@ class Painel extends CI_Controller {
 
 		if( $this->form_validation->run() == FALSE ){
 			if( validation_errors() ){
-				
+				$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
+				$mensagem[1] = 'alert-danger';
 			}
 		}else{
-			
+			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo Serviço';
+			$mensagem[1] = 'alert-success';
 		}
 
 
@@ -99,6 +102,7 @@ class Painel extends CI_Controller {
 			'titulo' => 'Tipos de Serviços',
 			'descricao' => ' - Cadastro de tipos de serviços',
 			'infos' => $pegaInfos,
+			'mensagem' => $mensagem,
 		);
 
 		$this->load->view('tiposervico',$dados);

@@ -4,15 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if( !function_exists('set_msg') ){
 
-	function set_msg( $msg=NULL){
-		$data = array
-            (
-                'username' => $u->username,
-                'usergroup' => $u->usergroup->get(),
-                'is_logged_in' => true
-            );
-            $obj=& get_instance();
-            $obj->session->set_userdata($data);
+	function set_msg( $msg=NULL ){
+		$ci = & get_instance();
+		$ci->session->set_userdata('aviso', $msg);
+	}
+
+}
+
+if( !function_exists('get_msg') ){
+
+	function get_msg( $destroy=True ){
+		$ci = & get_instance();
+		$retorno = $ci->session->userdata('aviso');
+		if( $destroy ){
+			$ci->session->unset_userdata('aviso');
+			return $retorno;
+		}
 	}
 
 }

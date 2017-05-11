@@ -3,12 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Painel extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+		$this->load->library(array('session'));
+	}
+	
+
 	public function index()	{
+
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
 
 		$dados = array(
 			'tela' => 'content',
 			'titulo' => 'Painel Administrativo',
-			'descricao' => ' - Configurações do Sistema'
+			'descricao' => ' - Configurações do Sistema',
+			'id' => $this->session->userdata('id_usuario'),
 		);
 
 		$this->load->view('painel',$dados);
@@ -16,7 +27,11 @@ class Painel extends CI_Controller {
 	}//index
 
 
-	public function cliente()	{
+	public function cliente(){
+
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
 
 		$dados = array(
 			'tela' => 'cliente',
@@ -28,7 +43,11 @@ class Painel extends CI_Controller {
 
 	}// cliente
 
-	public function tiposervico()	{
+	public function tiposervico(){
+
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
 
 		$dados = array(
 			'tela' => 'tiposervico',
@@ -40,7 +59,7 @@ class Painel extends CI_Controller {
 
 	}// tipo servico
 
-	public function valorservico()	{
+	public function valorservico(){
 
 		$dados = array(
 			'tela' => 'valorservico',
@@ -53,7 +72,7 @@ class Painel extends CI_Controller {
 	}// valor servico
 
 
-	public function servico()	{
+	public function servico(){
 
 		$dados = array(
 			'tela' => 'servico',

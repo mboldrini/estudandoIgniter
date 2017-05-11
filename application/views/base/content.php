@@ -7,7 +7,7 @@
 </section>
 <section class="content">
 
-
+<?php echo $id; ?>
 
   
 

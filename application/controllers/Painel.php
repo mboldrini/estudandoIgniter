@@ -7,6 +7,7 @@ class Painel extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('session'));
 
+		$this->load->helper('form');
 		#pegar as infos dos usuarios
 		$this->load->model('usuario');
 
@@ -78,6 +79,8 @@ class Painel extends CI_Controller {
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
 		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
+		
+
 		$dados = array(
 			'tela' => 'tiposervico',
 			'titulo' => 'Tipos de Serviços',
@@ -91,17 +94,17 @@ class Painel extends CI_Controller {
 
 	public function valorservico(){
 
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
 		$dados = array(
 			'tela' => 'valorservico',
 			'titulo' => 'Valores de Serviços',
 			'descricao' => ' - Cadastro de valores de serviços',
 			'infos' => $pegaInfos,
 		);
-
-		# pega o nome do usuario que tem na session e passa >
-		$nome = $this->session->userdata('username');
-		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
-		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
 		$this->load->view('valorservico',$dados);
 

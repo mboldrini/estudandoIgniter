@@ -8,7 +8,25 @@ class Funcoes extends CI_Model {
 		parent::__construct();
 	}
 
-	
+	public function count_TipSer(){
+
+		$query = $this->db->query('SELECT * FROM tiposervico');
+		return $query->num_rows();
+
+	}
+
+
+	public function count_CliCad(){
+
+		$query = $this->db->query('SELECT * FROM clientes');
+		return $query->num_rows();
+
+	}
+
+	public function count_serCad(){
+		$query = $this->db->query('SELECT * FROM servicos');
+		return $query->num_rows();
+	}
 
 
 

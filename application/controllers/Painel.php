@@ -31,6 +31,9 @@ class Painel extends CI_Controller {
 			'titulo' => 'Painel Administrativo',
 			'descricao' => ' - Configurações do Sistema',
 			'infos' => $pegaInfos,
+			'qtdCliCad' => $this->funcoes->count_CliCad(),
+			'qtdTipSer' => $this->funcoes->count_TipSer(),
+			'qtdSerCad' => $this->funcoes->count_SerCad(),
 		);
 
 		$this->load->view('painel',$dados);

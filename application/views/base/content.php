@@ -8,13 +8,16 @@
 <section class="content">
 
 
+
+
+
 <div class="col-md-3">
 	<div class="info-box">
   		<!-- Apply any bg-* class to to the icon to color it -->
   		<span class="info-box-icon bg-red"><i class="fa fa-cogs"></i></span>
   		<div class="info-box-content">
     		<span class="info-box-text">Serviços <br>Cadastrados</span>
-    		<span class="info-box-number">777</span>
+    		<span class="info-box-number"><?php echo $qtdSerCad; ?></span>
   		</div><!-- /.info-box-content -->
 	</div><!-- /.info-box -->
 </div>
@@ -25,7 +28,7 @@
   		<span class="info-box-icon bg-green"><i class="fa fa-group"></i></span>
   		<div class="info-box-content">
     		<span class="info-box-text">Clientes</span>
-    		<span class="info-box-number">333</span>
+    		<span class="info-box-number"><?php echo $qtdCliCad; ?></span>
   		</div><!-- /.info-box-content -->
 	</div><!-- /.info-box -->
 </div>
@@ -35,8 +38,8 @@
   		<!-- Apply any bg-* class to to the icon to color it -->
   		<span class="info-box-icon bg-blue"><i class="fa fa-cubes"></i></span>
   		<div class="info-box-content">
-    		<span class="info-box-text">tipos de <br>Serviços</span>
-    		<span class="info-box-number">333</span>
+    		<span class="info-box-text">Tipos de <br>Serviços</span>
+    		<span class="info-box-number"><?php echo $qtdTipSer; ?></span>
   		</div><!-- /.info-box-content -->
 	</div><!-- /.info-box -->
 </div>

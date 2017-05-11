@@ -6,6 +6,10 @@ class Painel extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->library(array('session'));
+
+		#pegar as infos dos usuarios
+		$this->load->model('usuario');
+
 	}
 	
 
@@ -15,11 +19,15 @@ class Painel extends CI_Controller {
 			redirect(base_url().'login');
 		}
 
+		$nome = $this->session->userdata('username');
+
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
 		$dados = array(
 			'tela' => 'content',
 			'titulo' => 'Painel Administrativo',
 			'descricao' => ' - Configurações do Sistema',
-			'id' => $this->session->userdata('id_usuario'),
+			'infos' => $pegaInfos,
 		);
 
 		$this->load->view('painel',$dados);

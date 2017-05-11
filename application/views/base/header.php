@@ -75,7 +75,7 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="<?= base_url(); ?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $infos[0]->nome; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -83,8 +83,8 @@ desired effect
                 <img src="<?= base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce
-                  <small>Programador</small>
+                  <?php echo $infos[0]->nome; ?> <?php echo $infos[0]->sobrenome; ?>
+                  <small><?php echo $infos[0]->descricao; ?></small>
                 </p>
               </li>
               <li class="user-footer">

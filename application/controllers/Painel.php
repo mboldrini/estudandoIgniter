@@ -83,6 +83,7 @@ class Painel extends CI_Controller {
 		// Regras de validacao
 		$this->form_validation->set_rules('servico', 'Serviço', 'trim|required');
 		$this->form_validation->set_rules('contabil', 'Contábil', 'trim|required');
+		$this->form_validation->set_rules('duracao', 'Duracao', 'trim|required');
 		$this->form_validation->set_rules('data', 'Data', 'trim|required');
 		$this->form_validation->set_rules('usuario', 'Usuário', 'trim|required');
 
@@ -92,6 +93,8 @@ class Painel extends CI_Controller {
 				$mensagem[1] = 'alert-danger';
 			}
 		}else{
+
+
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo Serviço';
 			$mensagem[1] = 'alert-success';
 		}

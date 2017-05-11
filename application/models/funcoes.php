@@ -31,5 +31,16 @@ class Funcoes extends CI_Model {
 	}
 
 
+	public function cadastraTipoServico($dados = NULL){
+
+		if($dados != NULL){
+
+			$this->db->insert('tiposervico', $dados );
+			
+		}
+
+	}
+
+
 
 }

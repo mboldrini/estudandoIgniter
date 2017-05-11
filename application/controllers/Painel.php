@@ -10,6 +10,9 @@ class Painel extends CI_Controller {
 		#pegar as infos dos usuarios
 		$this->load->model('usuario');
 
+		$this->load->model('funcoes');
+
+
 	}
 	
 

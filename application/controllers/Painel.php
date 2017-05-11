@@ -7,12 +7,11 @@ class Painel extends CI_Controller {
 		parent::__construct();
 		$this->load->library(array('session'));
 
-		$this->load->helper('form');
+		$this->load->helper('form', 'funcoes_helper');
 		#pegar as infos dos usuarios
 		$this->load->model('usuario');
 
 		$this->load->model('funcoes');
-
 
 	}
 	
@@ -74,12 +73,26 @@ class Painel extends CI_Controller {
 			redirect(base_url().'login');
 		}
 
+
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
 		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
-		
+		// Regras de validacao
+		$this->form_validation->set_rules('servico', 'Serviço', 'trim|required');
+		$this->form_validation->set_rules('contabil', 'Contábil', 'trim|required');
+		$this->form_validation->set_rules('data', 'Data', 'trim|required');
+		$this->form_validation->set_rules('usuario', 'Usuário', 'trim|required');
+
+		if( $this->form_validation->run() == FALSE ){
+			if( validation_errors() ){
+				
+			}
+		}else{
+			
+		}
+
 
 		$dados = array(
 			'tela' => 'tiposervico',

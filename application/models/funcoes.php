@@ -8,6 +8,7 @@ class Funcoes extends CI_Model {
 		parent::__construct();
 	}
 
+	#conta os tipos de serviços cadastrados
 	public function count_TipSer(){
 
 		$query = $this->db->query('SELECT * FROM tiposervico');
@@ -15,7 +16,7 @@ class Funcoes extends CI_Model {
 
 	}
 
-
+	# conta a quantidade de clientes cadastrados
 	public function count_CliCad(){
 
 		$query = $this->db->query('SELECT * FROM clientes');
@@ -23,6 +24,7 @@ class Funcoes extends CI_Model {
 
 	}
 
+	# conta a quantidade de servicos cadastrados
 	public function count_serCad(){
 		$query = $this->db->query('SELECT * FROM servicos');
 		return $query->num_rows();

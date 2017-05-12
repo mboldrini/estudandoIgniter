@@ -66,7 +66,28 @@ class Painel extends CI_Controller {
 
 	}// cliente
 
-	public function tiposervico(){
+	public function tipoServicoCadastrado(){
+
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
+		$servicosCadastrados = $this->funcoes->tipoServicoCadastrado();
+
+		$dados = array(
+			'tela' => 'tipoServicoCadastrado',
+			'titulo' => 'Tipos de Serviços',
+			'descricao' => ' - Tipos de Serviços já Cadastrados',
+			'infos' => $pegaInfos,
+			'servicos' => $servicosCadastrados,
+		);
+
+		$this->load->view('valorservico',$dados);
+
+	}// valor servico
+
+	public function cadastrarTipoServico(){
 
 		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
 		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
@@ -87,6 +108,13 @@ class Painel extends CI_Controller {
 		$this->form_validation->set_rules('data', 'Data', 'trim|required');
 		$this->form_validation->set_rules('usuario', 'Usuário', 'trim|required');
 
+		$usuario = $this->input->post('servico');
+		$contabil = $this->input->post('contabil');
+		$duracao = $this->input->post('duracao');
+		$data = $this->input->post('data');
+		$servico = $this->input->post('usuario');
+
+
 		if( $this->form_validation->run() == FALSE ){
 			if( validation_errors() ){
 				$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
@@ -94,6 +122,15 @@ class Painel extends CI_Controller {
 			}
 		}else{
 
+			$registra = array(
+				"descricao"=>$usuario,
+				"contabil"=>$contabil,
+				"duracao"=>$duracao,
+				"dataCadastro"=>$data,
+				"usuarioCadastro"=>$servico
+			);
+
+			$this->funcoes->cadastraTipoServico($registra);
 
 			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um novo Serviço';
 			$mensagem[1] = 'alert-success';
@@ -101,7 +138,7 @@ class Painel extends CI_Controller {
 
 
 		$dados = array(
-			'tela' => 'tiposervico',
+			'tela' => 'cadastrarTipoServico',
 			'titulo' => 'Tipos de Serviços',
 			'descricao' => ' - Cadastro de tipos de serviços',
 			'infos' => $pegaInfos,

@@ -41,6 +41,12 @@ class Funcoes extends CI_Model {
 
 	}
 
+	public function tipoServicoCadastrado(){
+		//$query = $this->db->query('SELECT * FROM tiposervico');
+		$query = $this->db->get('tiposervico');
+		return $query->result();
+	}
+
 
 
 }

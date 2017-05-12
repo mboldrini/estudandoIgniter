@@ -25,7 +25,7 @@
         </li>
 
         <li>
-          <a href="<?= base_url(); ?>painel/tiposervico">
+          <a href="<?= base_url(); ?>painel/tipoServicoCadastrado">
             <i class="fa fa-cubes "></i> <span>Tipo de Serviço</span>
           </a>
         </li>

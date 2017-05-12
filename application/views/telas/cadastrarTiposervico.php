@@ -47,7 +47,7 @@
 
   <div class="form-group">
     <?php echo form_label('Duração:', 'duracao'); ?>
-    <?php echo form_input('duracao',  '1' ,
+    <?php echo form_input('duracao',  '' ,
       array( 'class'=>'form-control col-md-3',
              'required'=>'required' ) 
             ); 
@@ -78,6 +78,11 @@
 <?php form_close(); ?>
 
 </div>
+
+
+<br><br>
+
+
   
 
 </section><!-- section da porra toda -->

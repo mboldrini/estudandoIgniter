@@ -41,8 +41,34 @@ class Funcoes extends CI_Model {
 	}
 
 
+	public function pegaTipoServico( $id = NULL ){
+		if( $id != NULL ){
+			/* seleciona no DB onde o campo ID == $id */
+			$this->db->where('id',$id);
+			
+			/* mostra apenas 1 resultado, e TEM q ser 1 resultado pois ID é unico */
+			$this->db->limit(1);
+			
+			/* pega a tabela aluno */
+			return $this->db->get('tiposervico');
+		}else{
+			return FALSE;			
+		}
+	}
 
 
+
+	public function do_update($dados, $condicao){
+
+			$this->db->where('id',$condicao);
+			/* atualiza o banco de dados aluno com os $dados usando a $condição */
+			$this->db->update('tiposervico',$dados);
+			
+			/* ao terminar de editar o registro vai para a tela de alunos cadastrados */
+			return $this->db->affected_rows();
+			
+	}
+	
 
 
 

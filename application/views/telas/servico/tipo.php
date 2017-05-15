@@ -38,7 +38,7 @@
                 <td><?php echo $servico->duracao; ?></td>
                 <td><?php echo $servico->dataCadastro; ?></td>
                 <td>
-                  <a class="btn btn-primary" href="#" role="button">Editar</a>
+                  <a class="btn btn-primary" href="<?= base_url('servico/editarTipo/' . $servico->id) ?>" role="button">Editar</a>
                   <a class="btn btn-danger" href="#" role="button">Excluir</a>
                 </td>
               </tr>

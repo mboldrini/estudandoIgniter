@@ -27,17 +27,16 @@ class Servico extends CI_Controller {
 		$servicosCadastrados = $this->funcoes->mostraTiposServicos();
 
 		$dados = array(
-			'tela' => 'tipoServicoCadastrado',
+			'tela' => 'tipo',
 			'titulo' => 'Tipos de Serviços',
 			'descricao' => ' - Tipos de Serviços já Cadastrados',
 			'infos' => $pegaInfos,
 			'servicos' => $servicosCadastrados,
 		);
 
-		$this->load->view('valorservico',$dados);
+		$this->load->view('servico',$dados);
 
 	}
-
 
 
 	public function novoTipo(){
@@ -91,14 +90,36 @@ class Servico extends CI_Controller {
 
 
 		$dados = array(
-			'tela' => 'cadastrarTipoServico',
+			'tela' => 'novoTipo',
 			'titulo' => 'Tipos de Serviços',
 			'descricao' => ' - Cadastro de tipos de serviços',
 			'infos' => $pegaInfos,
 			'mensagem' => $mensagem,
 		);
 
-		$this->load->view('tiposervico',$dados);
+		$this->load->view('servico',$dados);
+
+	}
+
+
+	public function editarTipo(){
+
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
+		$mensagem = [];
+
+
+		$dados = array(
+			'tela' => 'editarTipo',
+			'titulo' => 'Editar Tipos de Serviços',
+			'descricao' => ' - Editar Tipos de Serviços já Cadastrados',
+			'infos' => $pegaInfos,
+		);
+
+		$this->load->view('servico',$dados);
 
 	}
 
@@ -113,13 +134,13 @@ class Servico extends CI_Controller {
 		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
 		$dados = array(
-			'tela' => 'valorservico',
+			'tela' => 'valor',
 			'titulo' => 'Valores de Serviços',
 			'descricao' => ' - Cadastro de valores de serviços',
 			'infos' => $pegaInfos,
 		);
 
-		$this->load->view('valorservico',$dados);
+		$this->load->view('servico',$dados);
 
 	}// valor servico
 
@@ -128,7 +149,7 @@ class Servico extends CI_Controller {
 	public function servicos(){
 
 		$dados = array(
-			'tela' => 'servico',
+			'tela' => 'serv',
 			'titulo' => 'Serviços',
 			'descricao' => ' - Cadastro de Serviços',
 			'infos' => $pegaInfos,

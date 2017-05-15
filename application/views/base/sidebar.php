@@ -25,19 +25,19 @@
         </li>
 
         <li>
-          <a href="<?= base_url(); ?>painel/tipoServicoCadastrado">
+          <a href="<?= base_url(); ?>servico/tipo">
             <i class="fa fa-cubes "></i> <span>Tipo de Serviço</span>
           </a>
         </li>
 
         <li>
-          <a href="<?= base_url(); ?>painel/valorservico">
+          <a href="<?= base_url(); ?>servico/valor">
             <i class="fa fa-money"></i> <span>Valor do Serviço</span>
           </a>
         </li>
 
         <li>
-          <a href="<?= base_url(); ?>painel/servico">
+          <a href="<?= base_url(); ?>servico/servicos">
             <i class="fa fa-cogs "></i> <span>Serviços</span>
           </a>
         </li>

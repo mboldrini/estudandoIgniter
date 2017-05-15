@@ -3,7 +3,7 @@
   <h1>
     <?php echo $titulo; ?>
     <small><?php echo $descricao; ?></small>
-  <a class="btn btn-primary pull-right" href="<?= base_url(); ?>painel/cadastrarTipoServico" role="button">Cadastrar</a>
+  <a class="btn btn-primary pull-right" href="<?= base_url(); ?>servico/novoTipo" role="button">Cadastrar</a>
 
   </h1>
 </section>

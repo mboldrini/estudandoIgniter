@@ -111,12 +111,48 @@ class Servico extends CI_Controller {
 
 		$mensagem = [];
 
+		$this->form_validation->set_rules('servico', 'Serviço', 'trim|required');
+		$this->form_validation->set_rules('contabil', 'Contábil', 'trim|required');
+		$this->form_validation->set_rules('duracao', 'Duracao', 'trim|required');
+		$this->form_validation->set_rules('data', 'Data', 'trim|required');
+		$this->form_validation->set_rules('usuario', 'Usuário', 'trim|required');
+
+		$id = $this->input->post('id');
+		$usuario = $this->input->post('servico');
+		$contabil = $this->input->post('contabil');
+		$duracao = $this->input->post('duracao');
+		$data = $this->input->post('data');
+		$servico = $this->input->post('usuario');
+
+
+		if( $this->form_validation->run() == FALSE ){
+			if( validation_errors() ){
+				$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
+				$mensagem[1] = 'alert-danger';
+			}
+		}else{
+
+			$registra = array(
+				"descricao"=>$usuario,
+				"contabil"=>$contabil,
+				"duracao"=>$duracao,
+				"dataCadastro"=>$data,
+				"usuarioCadastro"=>$servico
+			);
+
+			$this->funcoes->atualizaTipoServico($registra, $id);
+
+			$mensagem[0] = '<strong>Parabéns!</strong> Você Editou um Serviço';
+			$mensagem[1] = 'alert-success';
+		}
+
 
 		$dados = array(
 			'tela' => 'editarTipo',
 			'titulo' => 'Editar Tipos de Serviços',
 			'descricao' => ' - Editar Tipos de Serviços já Cadastrados',
 			'infos' => $pegaInfos,
+			'mensagem' => $mensagem,
 		);
 
 		$this->load->view('servico',$dados);

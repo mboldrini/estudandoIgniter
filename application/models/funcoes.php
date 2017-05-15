@@ -58,7 +58,7 @@ class Funcoes extends CI_Model {
 
 
 
-	public function do_update($dados, $condicao){
+	public function atualizaTipoServico($dados, $condicao){
 
 			$this->db->where('id',$condicao);
 			/* atualiza o banco de dados aluno com os $dados usando a $condição */
@@ -66,6 +66,8 @@ class Funcoes extends CI_Model {
 			
 			/* ao terminar de editar o registro vai para a tela de alunos cadastrados */
 			return $this->db->affected_rows();
+
+
 			
 	}
 	

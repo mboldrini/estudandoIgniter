@@ -25,13 +25,14 @@
 ?>
 
   <div class="form-group">
-    <?php echo form_label('Id:', 'id'); ?>
+    <?php echo form_label('ID:', 'id'); ?>
     <?php echo form_input(
-      'servico', 
+      'id', 
       $servico->id ,
       array( 'autofocus '=> 'autofocus',
              'class'=>'form-control col-md-3',
-             'required'=>'required' ) 
+             'required'=>'required',
+             'readonly'=>'readonly', ) 
             ); 
     ?>
   </div>
@@ -49,14 +50,16 @@
   </div>
 
   <div class="form-group">
-      <?php echo form_label('Contabil:', 'contabil'); ?>
-      <?php 
-        $opcoes = array(
-          '1' => 'nao',
-          '2' => 'sim',
-        );
-      ?>
-      <?php  echo form_dropdown('contabil', $opcoes, '', array('class'=>'form-control')  ); ?>
+    <?php echo form_label('Contabil:', 'contabil'); ?>
+    <select class="form-control" id="contabil" name="contabil">
+      <?php if( $servico->contabil == 1){ ?>
+        <option value="1" selected>Não</option>
+        <option value="2">Sim</option>
+      <?php }else{ ?>
+        <option value="1" >Não</option>
+        <option value="2" selected>Sim</option>
+      <?php } ?>
+    </select>
   </div>
 
   <div class="form-group">
@@ -70,8 +73,7 @@
 
   <div class="form-group">
     <?php echo form_label('Data de Cadastro:', 'date'); ?>
-    <?php date_default_timezone_set('America/Sao_Paulo'); $date = date('d-m-Y'); ?>
-    <?php echo form_input('data', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required' ) ); ?>
+    <?php echo form_input('data', $servico->dataCadastro ,array( 'class'=>'form-control col-md-3', 'required'=>'required' ) ); ?>
   </div>
 
   <div class="form-group">
@@ -81,7 +83,7 @@
           $infos[0]->id => $infos[0]->nome,
         );
       ?>
-      <?php  echo form_dropdown('usuario', $opcoes, '', array('class'=>'form-control')  ); ?>
+      <?php  echo form_dropdown('usuario', $opcoes, '', array('class'=>'form-control', 'readonly'=>'readonly')  ); ?>
   </div>
   
 

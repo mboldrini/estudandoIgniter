@@ -67,7 +67,7 @@
           $infos[0]->id => $infos[0]->nome,
         );
       ?>
-      <?php  echo form_dropdown('usuario', $opcoes, '', array('class'=>'form-control')  ); ?>
+      <?php  echo form_dropdown('usuario', $opcoes, '', array('class'=>'form-control', 'readonly'=>'readonly')  ); ?>
   </div>
   
 

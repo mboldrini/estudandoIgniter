@@ -73,7 +73,7 @@ class Painel extends CI_Controller {
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
 		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
-		$servicosCadastrados = $this->funcoes->tipoServicoCadastrado();
+		$servicosCadastrados = $this->funcoes->mostraTiposServicos();
 
 		$dados = array(
 			'tela' => 'tipoServicoCadastrado',
@@ -148,6 +148,7 @@ class Painel extends CI_Controller {
 		$this->load->view('tiposervico',$dados);
 
 	}// tipo servico
+
 
 	public function valorservico(){
 

@@ -3,6 +3,8 @@
   <h1>
     <?php echo $titulo; ?>
     <small><?php echo $descricao; ?></small>
+  <a class="btn btn-primary pull-right" href="<?= base_url(); ?>painel/cadastrarTipoServico" role="button">Cadastrar</a>
+
   </h1>
 </section>
 <section class="content">
@@ -17,29 +19,36 @@
           		<th>Contábil</th>
           		<th>Duração</th>
           		<th>Data de Cadastro</th>
-          		<th>Usuário</th>
+          		<th>Opções</th>
+
         	</tr>
       	</thead>
       	<tbody>
-        	<tr>
-	          	<td>lorem</td>
-	          	<td>sodales</td>
-	          	<td>ligula</td>
-	          	<td>in</td>
-	          	<td>libero</td>
-	          	<td>libero</td>
-        	</tr>
+          <?php foreach ($servicos as $servico): ?>
+              <tr>
+                <td><?php echo $servico->id; ?></td>
+                <td><?php echo $servico->descricao; ?></td>
+                <td>
+                  <?php if( $servico->contabil == 1){ ?> 
+                    <span class="label label-default">Não</span>
+                  <?php }else{ ?>    
+                    <span class="label label-success">Sim</span>    
+                  <?php } ?>           
+                </td>
+                <td><?php echo $servico->duracao; ?></td>
+                <td><?php echo $servico->dataCadastro; ?></td>
+                <td>
+                  <a class="btn btn-primary" href="#" role="button">Editar</a>
+                  <a class="btn btn-danger" href="#" role="button">Excluir</a>
+                </td>
+              </tr>
+          <?php endforeach; ?>
       	</tbody>
     </table>
 </div>
 
-<?php print_r($servicos); ?>
 
-	<h1>
-		<?php foreach $servicos as $row ?>
-		<?php echo "afsasf"; ?>
-	<?php endforeach; ?>
-	</h1>
+
 
 </section><!-- section da porra toda -->
 </div><!-- div da porra toda -->

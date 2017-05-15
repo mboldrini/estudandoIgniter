@@ -10,20 +10,14 @@ class Funcoes extends CI_Model {
 
 	#conta os tipos de serviços cadastrados
 	public function count_TipSer(){
-
 		$query = $this->db->query('SELECT * FROM tiposervico');
 		return $query->num_rows();
-
 	}
-
 	# conta a quantidade de clientes cadastrados
 	public function count_CliCad(){
-
 		$query = $this->db->query('SELECT * FROM clientes');
 		return $query->num_rows();
-
 	}
-
 	# conta a quantidade de servicos cadastrados
 	public function count_serCad(){
 		$query = $this->db->query('SELECT * FROM servicos');
@@ -32,20 +26,23 @@ class Funcoes extends CI_Model {
 
 
 	public function cadastraTipoServico($dados = NULL){
-
 		if($dados != NULL){
+			$this->db->insert('tiposervico', $dados );			
+		}
+	}
 
-			$this->db->insert('tiposervico', $dados );
-			
+
+	public function mostraTiposServicos(){
+		$query = $this->db->get('tiposervico');
+		if( $query->num_rows() > 0){
+			return $query->result();
 		}
 
 	}
 
-	public function tipoServicoCadastrado(){
-		//$query = $this->db->query('SELECT * FROM tiposervico');
-		$query = $this->db->get('tiposervico');
-		return $query->result();
-	}
+
+
+
 
 
 

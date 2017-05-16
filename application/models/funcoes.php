@@ -76,10 +76,27 @@ class Funcoes extends CI_Model {
 		}
 	}
 
+	// mostra todos os clientes cadastrados
 	public function mostraClientes(){
 		$query = $this->db->get('clientes');
 		if( $query->num_rows() > 0){
 			return $query->result();
+		}
+	}
+
+	// pega as informacoes apenas de um cliente especifico
+	public function pegaFichaCliente( $id = NULL ){
+		if( $id != NULL ){
+			/* seleciona no DB onde o campo ID == $id */
+			$this->db->where('id',$id);
+			
+			/* mostra apenas 1 resultado, e TEM q ser 1 resultado pois ID é unico */
+			$this->db->limit(1);
+			
+			/* pega a tabela aluno */
+			return $this->db->get('clientes');
+		}else{
+			return FALSE;			
 		}
 	}
 

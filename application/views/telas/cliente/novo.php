@@ -93,7 +93,7 @@
     <div class="form-group">
       <label for="exampleInputEmail1">Data de Cadastro:</label>
       <?php date_default_timezone_set('America/Sao_Paulo'); $date = date('d-m-Y'); ?>
-      <?php echo form_input('data', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly' ) ); ?>
+      <?php echo form_input('dataCadastro', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly' ) ); ?>
     </div>
 
     <div class="form-group">

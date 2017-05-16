@@ -27,7 +27,7 @@
             <?php foreach ($clientes as $cliente): ?>
               <tr>
                 <td><?php echo $cliente->id; ?></td>
-                <td><?php echo $cliente->nome; ?></td>
+                <td><a href="<?= base_url('cliente/ficha/' . $cliente->id) ?>"><?php echo $cliente->nome; ?></a></td>
                 <td><?php echo $cliente->cpf; ?></td>
                 <td><?php echo $cliente->celular; ?></td>
                 <td><?php echo $cliente->email; ?></td>

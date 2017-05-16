@@ -100,6 +100,16 @@ class Funcoes extends CI_Model {
 		}
 	}
 
+	public function editaCliente($dados, $condicao){
+
+			$this->db->where('id',$condicao);
+			/* atualiza o banco de dados aluno com os $dados usando a $condição */
+			$this->db->update('clientes',$dados);
+			/* ao terminar de editar o registro vai para a tela de alunos cadastrados */
+			return $this->db->affected_rows();
+			
+	}
+
 
 
 }

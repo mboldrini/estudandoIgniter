@@ -68,7 +68,7 @@
                  <div class="panel-footer">
                         <a data-original-title="" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-"></i></a>
                         <span class="pull-right">
-                            <a href="edit.html" data-original-title="Editar Usuário" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>Editar</a>
+                            <a href="<?= base_url('cliente/editar/' . $cliente->id) ?>" data-original-title="Editar Usuário" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>Editar</a>
                             <a data-original-title="Remover Usuario" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i>Excluir</a>
                         </span>
                     </div>

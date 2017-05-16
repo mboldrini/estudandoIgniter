@@ -31,7 +31,7 @@
                 <td><?php echo $cliente->cpf; ?></td>
                 <td><?php echo $cliente->celular; ?></td>
                 <td><?php echo $cliente->email; ?></td>
-                <td>Botões de Edição Aqui</td>
+                <td><a href="<?= base_url('cliente/editar/' . $cliente->id) ?>" data-original-title="Editar Usuário" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>Editar</a></td>
               </tr>
             <?php endforeach; ?>
       	</tbody>

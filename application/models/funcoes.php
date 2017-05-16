@@ -66,11 +66,22 @@ class Funcoes extends CI_Model {
 			
 			/* ao terminar de editar o registro vai para a tela de alunos cadastrados */
 			return $this->db->affected_rows();
-
-
 			
 	}
 	
+
+	public function cadastraCliente($dados = NULL){
+		if($dados != NULL){
+			$this->db->insert('clientes', $dados );			
+		}
+	}
+
+	public function mostraClientes(){
+		$query = $this->db->get('clientes');
+		if( $query->num_rows() > 0){
+			return $query->result();
+		}
+	}
 
 
 

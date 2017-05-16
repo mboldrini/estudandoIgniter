@@ -19,7 +19,7 @@
         </li>
 
         <li>
-          <a href="<?= base_url(); ?>painel/cliente">
+          <a href="<?= base_url(); ?>cliente/clientes">
             <i class="fa fa-group "></i> <span>Cliente</span>
           </a>
         </li>

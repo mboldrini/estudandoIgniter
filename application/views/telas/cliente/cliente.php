@@ -34,7 +34,9 @@
                 <td>
                   <a href="<?= base_url('cliente/editar/' . $cliente->id) ?>" data-original-title="Editar Usuário" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>Editar</a>
 
-                  <a data-original-title="Remover Usuario" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" href="<?= base_url('cliente/excluir/' . $cliente->id) ?>"><i class="glyphicon glyphicon-remove"></i>Excluir</a>
+                 
+                  <a class="btn btn-danger" href="<?= base_url('cliente/excluir/' . $cliente->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');">Excluir</a>
+
 
                 </td>
               </tr>

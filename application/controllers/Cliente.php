@@ -209,6 +209,29 @@ class Cliente extends CI_Controller {
 
 	}// cliente
 
+	public function excluir(){
+
+		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
+		$dados = array(
+			'tela' => 'excluir',
+			'titulo' => 'Clientes',
+			'descricao' => ' - exclusão de registro do cliente',
+			'infos' => $pegaInfos,
+		);
+
+		$this->load->view('cliente',$dados);
+
+	}// cliente
+
 
 
 }

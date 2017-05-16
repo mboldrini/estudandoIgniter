@@ -110,6 +110,15 @@ class Funcoes extends CI_Model {
 			
 	}
 
+	public function do_delete($id, $tabela){
+
+			$this->db->delete($tabela,$id);
+
+			redirect( base_url()."cliente/clientes" );
+
+			
+	}
+
 
 
 }

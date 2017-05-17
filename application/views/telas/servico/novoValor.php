@@ -3,7 +3,6 @@
   <h1>
     <?php echo $titulo; ?>
     <small><?php echo $descricao; ?></small>
-    <a class="btn btn-primary pull-right" href="#" role="button">Cadastrar Valor</a>
 
   </h1>
 </section>

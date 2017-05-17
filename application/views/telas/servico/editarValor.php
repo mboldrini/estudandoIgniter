@@ -17,13 +17,18 @@
 
 <?php echo form_open(); ?>
 
-<!--<?php 
+<?php 
   if( $mensagem ){
     echo '<div class="alert '.$mensagem[1].' alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   '.$mensagem[0].'</div>';
   }
-?>-->
+?>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Data de Início:</label>
+    <?php echo form_input('id', $valorServico->id ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly') ); ?>
+  </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Serviço:</label>

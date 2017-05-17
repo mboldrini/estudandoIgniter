@@ -5,7 +5,7 @@
       6.6.5
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 <a href="#">Tabajara Software</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2017 <a href="#">Mutatu Corporation</a>.</strong> All rights reserved.
   </footer>
 
   <div class="control-sidebar-bg"></div>

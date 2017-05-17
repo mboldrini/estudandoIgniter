@@ -46,6 +46,10 @@
 
 
 
+<div class="col-md-8">
+  <canvas id="myChart"></canvas>
+</div>
+
 
 
 </section><!-- section da porra toda -->

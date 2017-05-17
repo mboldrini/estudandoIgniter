@@ -111,6 +111,9 @@ class Funcoes extends CI_Model {
 	}
 
 
+
+
+
 	// funcao publica para exclusao de um id de qualquer tabela
 	public function do_delete($id, $tabela, $redireciona){
 
@@ -144,6 +147,13 @@ class Funcoes extends CI_Model {
 		$query = $this->db->get($tabela);
 		if( $query->num_rows() > 0){
 			return $query->result();
+		}
+	}
+
+
+	public function do_insert($dados, $tabela){
+		if($dados != NULL){
+			$this->db->insert($tabela, $dados );			
 		}
 	}
 

@@ -22,7 +22,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
+  <script src="<?= base_url(); ?>assets/jquery.js"></script>
+
   <link rel="stylesheet" href="<?= base_url(); ?>assets/dist/css/skins/skin-blue.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+  <script src="<?= base_url(); ?>assets/grafico.js"></script>
 
 </head>
 <!--

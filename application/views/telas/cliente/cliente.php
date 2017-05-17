@@ -19,6 +19,7 @@
           		<th>CPF</th>
           		<th>Celular</th>
           		<th>Email</th>
+              <th>Serviços</th>
           		<th>Opções</th>
 
         	</tr>
@@ -31,6 +32,9 @@
                 <td><?php echo $cliente->cpf; ?></td>
                 <td><?php echo $cliente->celular; ?></td>
                 <td><?php echo $cliente->email; ?></td>
+                <td>
+                  <a href="<?= base_url('servico/novoservico/' . $cliente->id) ?>" data-original-title="Novo Serviço" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-plus-square"></i>  Novo Serviço</a>
+                </td>
                 <td>
                   <a href="<?= base_url('cliente/editar/' . $cliente->id) ?>" data-original-title="Editar Usuário" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>Editar</a>
 

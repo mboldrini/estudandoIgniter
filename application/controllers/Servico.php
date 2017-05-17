@@ -225,6 +225,27 @@ class Servico extends CI_Controller {
 	}// cliente
 
 
+	public function novoservico(){
+
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
+		$servicosCadastrados = $this->funcoes->mostraTiposServicos();
+
+		$dados = array(
+			'tela' => 'novoservico',
+			'titulo' => 'Novo Serviço',
+			'descricao' => ' - Cadastro de um novo serviço',
+			'infos' => $pegaInfos,
+			'servicos' => $servicosCadastrados,
+		);
+
+		$this->load->view('servico',$dados);
+
+	}
+
 	
 
 }// Porra Toda

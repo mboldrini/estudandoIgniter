@@ -16,9 +16,10 @@
   // condicao a ser passada pra tabela de exclusao
   $cond = array('id'=> $id);
   // qual tabela vai ser excluido o id
-  $tabela = 'clientes';
+  $tabela = 'tiposervico';
   // vai redirecionar pra onde
-  $redireciona = 'cliente/clientes';
+  $redireciona = 'servico/tipo';
+  
   $cliente = $this->funcoes->do_delete($cond, $tabela, $redireciona);
 ?>
 

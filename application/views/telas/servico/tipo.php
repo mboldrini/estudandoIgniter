@@ -39,7 +39,8 @@
                 <td><?php echo $servico->dataCadastro; ?></td>
                 <td>
                   <a class="btn btn-primary" href="<?= base_url('servico/editarTipo/' . $servico->id) ?>" role="button">Editar</a>
-                  <a class="btn btn-danger" href="#" role="button">Excluir</a>
+                  <a class="btn btn-danger" href="<?= base_url('servico/excluir/' . $servico->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');">Excluir</a>
+                  
                 </td>
               </tr>
           <?php endforeach; ?>

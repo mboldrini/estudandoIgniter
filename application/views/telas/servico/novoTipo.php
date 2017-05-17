@@ -57,7 +57,7 @@
   <div class="form-group">
     <?php echo form_label('Data de Cadastro:', 'date'); ?>
     <?php date_default_timezone_set('America/Sao_Paulo'); $date = date('d-m-Y'); ?>
-    <?php echo form_input('data', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required' ) ); ?>
+    <?php echo form_input('data', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly' ) ); ?>
   </div>
 
   <div class="form-group">

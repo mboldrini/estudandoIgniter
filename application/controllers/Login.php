@@ -20,7 +20,8 @@ class Login extends CI_Controller{
 			case '':
 				$data['token'] = $this->token();
 				$data['titulo'] = 'Login con roles de usuario en codeigniter';
-				$this->load->view('login_view',$data);
+				//$this->load->view('login_view',$data);
+				$this->load->view('login',$data);
 				break;
 			case 'administrador':
 				redirect(base_url().'admin');
@@ -33,7 +34,8 @@ class Login extends CI_Controller{
 				break;
 			default:		
 				$data['titulo'] = 'Login con roles de usuario en codeigniter';
-				$this->load->view('login_view',$data);
+				//$this->load->view('login_view',$data);
+				$this->load->view('login',$data);
 				break;		
 		}
 	}

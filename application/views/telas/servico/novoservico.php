@@ -178,7 +178,7 @@
     <label for="exampleInputEmail1">Nome do Técnico:</label>
     <?php echo form_input(
         'nomeTecnico', 
-        '' ,
+        $infos[0]->nome ,
         array( 'class'=>'form-control col-md-3',
           ) 
       ); 

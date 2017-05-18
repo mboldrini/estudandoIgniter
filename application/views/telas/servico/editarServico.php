@@ -73,6 +73,10 @@
   }
 ?>
 
+  <div class="form-group">
+    <label for="exampleInputEmail1">ID do Serviço:</label>
+    <?php echo form_input('codigoServico', $servico->id ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly') ); ?>
+  </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Data do Serviço:</label>
@@ -106,7 +110,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Solicitação:</label>
     <?php echo form_textarea(
-        'soliticado', 
+        'solicitacao', 
         $servico->solicitacao ,
         array( 'class'=>'form-control col-md-3',
                 'required'=>'required',
@@ -119,7 +123,7 @@
     <label for="exampleInputEmail1">Detectado:</label>
     <?php echo form_textarea(
         'detectado', 
-        '' ,
+        $servico->detectado ,
         array( 'class'=>'form-control col-md-3',
           ) 
       ); 
@@ -130,7 +134,7 @@
     <label for="exampleInputEmail1">Solução:</label>
     <?php echo form_textarea(
         'solucao', 
-        '' ,
+        $servico->solucao ,
         array( 'class'=>'form-control col-md-3',
           ) 
       ); 
@@ -141,7 +145,7 @@
     <label for="exampleInputEmail1">Previsão de Conclusão:</label>
     <?php echo form_input(
         'pervisaoConclusao', 
-        '' ,
+        $servico->previsaoConclusao ,
         array( 'class'=>'form-control col-md-3',
           ) 
       ); 
@@ -152,7 +156,7 @@
     <label for="exampleInputEmail1">Data da Conclusão:</label>
     <?php echo form_input(
         'dataConclusao', 
-        '' ,
+        $servico->dataConclusao ,
         array( 'class'=>'form-control col-md-3',
           ) 
       ); 
@@ -163,7 +167,7 @@
     <label for="exampleInputEmail1">Status do Serviço:</label>
     <?php echo form_input(
         'status', 
-        '' ,
+        $servico->status ,
         array( 'class'=>'form-control col-md-3',
           ) 
       ); 
@@ -174,18 +178,12 @@
     <label for="exampleInputEmail1">Nome do Técnico:</label>
     <?php echo form_input(
         'nomeTecnico', 
-        '' ,
+        $infos[0]->nome ,
         array( 'class'=>'form-control col-md-3',
           ) 
       ); 
     ?>
   </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Data de Cadastro:</label>
-    <?php echo form_input('dataCadastro', $servico->dataCadastro ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly' ) ); ?>
-  </div>
-
 
 
   <br><br>

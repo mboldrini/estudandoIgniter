@@ -508,61 +508,57 @@ class Servico extends CI_Controller {
 
 		$mensagem = [];
 
-		// $this->form_validation->set_rules('codigoCliente', 		'codigoCliente', 		'trim|required');
-		// $this->form_validation->set_rules('dataServico', 		'dataServico', 			'trim|required');
-		// $this->form_validation->set_rules('horaServico', 		'horaServico', 			'trim');
-		// $this->form_validation->set_rules('tipoServico', 		'tipoServico', 			'trim|required');
-		// $this->form_validation->set_rules('soliticado', 		'soliticado', 			'trim|required');
-		// $this->form_validation->set_rules('detectado', 			'detectado', 			'trim');
-		// $this->form_validation->set_rules('solucao', 			'solucao', 				'trim');
-		// $this->form_validation->set_rules('pervisaoConclusao', 	'pervisaoConclusao',	'trim');
-		// $this->form_validation->set_rules('dataConclusao', 		'dataConclusao', 		'trim');
-		// $this->form_validation->set_rules('status', 			'status', 				'trim');
-		// $this->form_validation->set_rules('nomeTecnico', 		'nomeTecnico', 			'trim');
-		// $this->form_validation->set_rules('dataCadastro', 		'dataCadastro', 		'trim|required');
-		// $this->form_validation->set_rules('usuarioCadastro', 	'usuarioCadastro', 		'trim|required');
+		$this->form_validation->set_rules('codigoServico', 		'codigoServico', 		'trim|required');
+		$this->form_validation->set_rules('dataServico', 		'dataServico', 			'trim|required');
+		$this->form_validation->set_rules('horaServico', 		'horaServico', 			'trim');
+		$this->form_validation->set_rules('tipoServico', 		'tipoServico', 			'trim|required');
+		$this->form_validation->set_rules('solicitacao', 		'solicitacao', 			'trim|required');
+		$this->form_validation->set_rules('detectado', 			'detectado', 			'trim');
+		$this->form_validation->set_rules('solucao', 			'solucao', 				'trim');
+		$this->form_validation->set_rules('pervisaoConclusao', 	'pervisaoConclusao',	'trim');
+		$this->form_validation->set_rules('dataConclusao', 		'dataConclusao', 		'trim');
+		$this->form_validation->set_rules('status', 			'status', 				'trim');
+		$this->form_validation->set_rules('nomeTecnico', 		'nomeTecnico', 			'trim');
 
-		// $codigoCliente		= $this->input->post('codigoCliente');
-		// $dataServico 		= $this->input->post('dataServico');
-		// $horaServico 		= $this->input->post('horaServico');
-		// $tipoServico 		= $this->input->post('tipoServico');
-		// $solicitado 		= $this->input->post('solicitado');
-		// $detectado 			= $this->input->post('detectado');
-		// $solucao 			= $this->input->post('solucao');
-		// $previsaoConclusao 	= $this->input->post('pervisaoConclusao');
-		// $dataConclusao 		= $this->input->post('dataConclusao');
-		// $status 			= $this->input->post('status');
-		// $nomeTecnico 		= $this->input->post('nomeTecnico');
-		// $dataCadastro 		= $this->input->post('dataCadastro');
-		// $usuarioCadastro 	= $this->input->post('usuarioCadastro');
+		$id					= $this->input->post('codigoServico');
+		$dataServico 		= $this->input->post('dataServico');
+		$horaServico 		= $this->input->post('horaServico');
+		$tipoServico 		= $this->input->post('tipoServico');
+		$solicitacao 		= $this->input->post('solicitacao');
+		$detectado 			= $this->input->post('detectado');
+		$solucao 			= $this->input->post('solucao');
+		$previsaoConclusao 	= $this->input->post('pervisaoConclusao');
+		$dataConclusao 		= $this->input->post('dataConclusao');
+		$status 			= $this->input->post('status');
+		$nomeTecnico 		= $this->input->post('nomeTecnico');
 
-		// if( $this->form_validation->run() == FALSE ){
-		// 	if( validation_errors() ){
-		// 		$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
-		// 		$mensagem[1] = 'alert-danger';
-		// 	}
-		// }else{
-		// 	$registra = array(
-		// 		"codigoCliente"		=> $codigoCliente,
-		// 		"dataServico" 		=> $dataServico,
-		// 		"horaServico" 		=> $horaServico,
-		// 		"tipo" 				=> $tipoServico,
-		// 		"solicitacao" 		=> $solicitado,
-		// 		"detectado" 		=> $detectado,
-		// 		"solucao" 			=> $solucao,
-		// 		"previsaoConclusao" => $previsaoConclusao,
-		// 		"dataConclusao" 	=> $dataConclusao,
-		// 		"status" 			=> $status,
-		// 		"nomeTecnico" 		=> $nomeTecnico,
-		// 		"dataCadastro" 		=> $dataCadastro,
-		// 		"usuarioCadastro" 	=> $usuarioCadastro,
-		// 	);
+		if( $this->form_validation->run() == FALSE ){
+			if( validation_errors() ){
+				$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
+				$mensagem[1] = 'alert-danger';
+			}
+		}else{
 
-		// 	$this->funcoes->do_insert($registra, 'servicos');
+			$idServico = array("id"=>$id);
 
-		// 	$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um Serviço!';
-		// 	$mensagem[1] = 'alert-success';
-		// }
+			$registra = array(
+				"dataServico" 		=> $dataServico,
+				"horaServico" 		=> $horaServico,
+				"tipo" 				=> $tipoServico,
+				"solicitacao" 		=> $solicitacao,
+				"detectado" 		=> $detectado,
+				"solucao" 			=> $solucao,
+				"previsaoConclusao" => $previsaoConclusao,
+				"dataConclusao" 	=> $dataConclusao,
+				"status" 			=> $status,
+				"nomeTecnico" 		=> $nomeTecnico,
+			);
+
+			$this->funcoes->do_update($registra, 'servicos', $idServico);
+
+			$mensagem[0] = '<strong>Parabéns!</strong> Você editou um Serviço!';
+			$mensagem[1] = 'alert-success';
+		}
 
 		$dados = array(
 			'tela' 		=> 'editarServico',
@@ -576,6 +572,29 @@ class Servico extends CI_Controller {
 		$this->load->view('servico',$dados);
 
 	}
+
+	public function excluirServico(){
+
+		# verificação de usuario logado, e se sim, tem que ser no perfil de administrador
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
+		$dados = array(
+			'tela' => 'excluirServico',
+			'titulo' => 'Excluir Serviço',
+			'descricao' => ' - exclusão de registro de serviço',
+			'infos' => $pegaInfos,
+		);
+
+		$this->load->view('servico',$dados);
+
+	}// cliente
 
 	
 

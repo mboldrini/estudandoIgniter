@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Maio-2017 às 20:26
+-- Generation Time: 18-Maio-2017 às 18:33
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -55,20 +55,28 @@ INSERT INTO `clientes` (`id`, `nome`, `cpf`, `dataNascimento`, `email`, `telefon
 CREATE TABLE `servicos` (
   `id` int(11) NOT NULL,
   `codigoCliente` int(20) NOT NULL,
-  `dataServico` date DEFAULT NULL,
+  `dataServico` varchar(20) DEFAULT NULL,
   `horaServico` varchar(20) DEFAULT NULL,
   `tipo` int(20) NOT NULL,
   `solicitacao` varchar(255) DEFAULT NULL,
   `detectado` varchar(255) DEFAULT NULL,
   `solucao` varchar(255) DEFAULT NULL,
-  `previsaoConclusao` date DEFAULT NULL,
-  `dataConclusao` date DEFAULT NULL,
+  `previsaoConclusao` varchar(20) DEFAULT NULL,
+  `dataConclusao` varchar(20) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
   `nomeTecnico` varchar(150) DEFAULT NULL,
   `contatoTecnico` varchar(100) DEFAULT NULL,
-  `dataCadastro` date DEFAULT NULL,
+  `dataCadastro` varchar(20) DEFAULT NULL,
   `usuarioCadastro` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `servicos`
+--
+
+INSERT INTO `servicos` (`id`, `codigoCliente`, `dataServico`, `horaServico`, `tipo`, `solicitacao`, `detectado`, `solucao`, `previsaoConclusao`, `dataConclusao`, `status`, `nomeTecnico`, `contatoTecnico`, `dataCadastro`, `usuarioCadastro`) VALUES
+(1, 2, '05/05/15', '15/05/50', 14, 'solicitacao', 'detectado', 'solucao', '09/05/05', '09/05/05', 'concluido', 'breno', 'contato', '05/05/05', 1),
+(2, 3, '18/05/2017', '4:20', 11, 'solicitacao', 'detectado', 'solucao', '05/05/05', '05/05/05', 'em andamento', 'matheus', NULL, '18-05-2017', 1);
 
 -- --------------------------------------------------------
 
@@ -93,8 +101,7 @@ INSERT INTO `tiposervico` (`id`, `descricao`, `contabil`, `duracao`, `dataCadast
 (11, 'Formatacao', '1', '1', '15-05-2017', 1),
 (12, 'Limpeza', '2', '2', '15-05-2017', 1),
 (13, 'Virus', '2', '1', '15-05-2017', 1),
-(14, 'Windows Server', '2', '2', '15-05-2017', 1),
-(15, 'Banana', '2', '5', '27/825/265', 1);
+(14, 'Windows Server', '2', '2', '15-05-2017', 1);
 
 -- --------------------------------------------------------
 
@@ -118,8 +125,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`perfil`, `username`, `password`, `nome`, `sobrenome`, `descricao`, `id`) VALUES
 ('administrador', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'matheus', 'boldrini', 'Técnico Nível 3', 1),
-('editor', 'vanessa78', 'ab41949825606da179db7c89ddcedcc167b64847', '', '', NULL, 2),
-('suscriptor', 'jaime70', '1a248d7a471ad8d5993aa523c8397ce1d0bafe78', '', '', NULL, 3);
+('administrador', 'teste', '2e6f9b0d5885b6010f9167787445617f553a735f', 'Teste', 'Teste', 'Usuário de Teste', 5),
+('administrador', 'breno', '2d221fa74dbadf392f0bedf7efb96ecc5ec2c8f2', 'breno', 'alves', 'programador', 6);
 
 -- --------------------------------------------------------
 
@@ -130,12 +137,21 @@ INSERT INTO `users` (`perfil`, `username`, `password`, `nome`, `sobrenome`, `des
 CREATE TABLE `valorservico` (
   `id` int(11) NOT NULL,
   `tipo` int(20) NOT NULL,
-  `inicioValor` date DEFAULT NULL,
-  `valor` int(20) NOT NULL,
+  `inicioValor` varchar(20) DEFAULT NULL,
+  `valor` varchar(20) NOT NULL,
   `fimValor` varchar(20) DEFAULT NULL,
-  `dataCadastro` date DEFAULT NULL,
+  `dataCadastro` varchar(20) DEFAULT NULL,
   `usuarioCadastro` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `valorservico`
+--
+
+INSERT INTO `valorservico` (`id`, `tipo`, `inicioValor`, `valor`, `fimValor`, `dataCadastro`, `usuarioCadastro`) VALUES
+(1, 13, '05/05/05', '50', '05/05/55', '17-05-2017', 1),
+(2, 14, '05/09/85', '99', '50/57/50', NULL, 1),
+(4, 12, '05/08/09', '73', '02/56/2019', '17-05-2017', 1);
 
 --
 -- Indexes for dumped tables
@@ -175,7 +191,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `valorservico`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `usuarioCadastro` (`usuarioCadastro`);
+  ADD KEY `usuarioCadastro` (`usuarioCadastro`),
+  ADD KEY `tipo` (`tipo`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -185,27 +202,27 @@ ALTER TABLE `valorservico`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `servicos`
 --
 ALTER TABLE `servicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tiposervico`
 --
 ALTER TABLE `tiposervico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `valorservico`
 --
 ALTER TABLE `valorservico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
@@ -234,7 +251,8 @@ ALTER TABLE `tiposervico`
 -- Limitadores para a tabela `valorservico`
 --
 ALTER TABLE `valorservico`
-  ADD CONSTRAINT `valorservico_ibfk_1` FOREIGN KEY (`usuarioCadastro`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `valorservico_ibfk_1` FOREIGN KEY (`usuarioCadastro`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `valorservico_ibfk_2` FOREIGN KEY (`tipo`) REFERENCES `tiposervico` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

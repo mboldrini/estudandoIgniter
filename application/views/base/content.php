@@ -44,11 +44,22 @@
 	</div><!-- /.info-box -->
 </div>
 
-
-
-<div class="col-md-8">
-  <canvas id="myChart"></canvas>
+<div class="col-md-3">
+  <div class="info-box">
+      <!-- Apply any bg-* class to to the icon to color it -->
+      <span class="info-box-icon bg-yellow"><i class="fa fa-cubes"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Usuários <br>Cadastrados</span>
+        <span class="info-box-number"><?php echo $qtdUsrCad; ?></span>
+      </div><!-- /.info-box-content -->
+  </div><!-- /.info-box -->
 </div>
+
+
+
+<!-- <div class="col-md-8">
+  <canvas id="myChart"></canvas>
+</div> -->
 
 
 

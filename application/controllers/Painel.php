@@ -36,6 +36,7 @@ class Painel extends CI_Controller {
 			'qtdCliCad' => $this->funcoes->count_CliCad(),
 			'qtdTipSer' => $this->funcoes->count_TipSer(),
 			'qtdSerCad' => $this->funcoes->count_SerCad(),
+			'qtdUsrCad' => $this->funcoes->do_countAll('users'),
 		);
 
 		$this->load->view('painel',$dados);

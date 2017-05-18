@@ -168,5 +168,10 @@ class Funcoes extends CI_Model {
 			
 	}
 
+	public function do_countAll($tabela){
+		$query = $this->db->query('SELECT * FROM '.$tabela.' ');
+		return $query->num_rows();
+	}
+
 
 }

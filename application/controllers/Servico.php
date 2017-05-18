@@ -373,6 +373,9 @@ class Servico extends CI_Controller {
 			'descricao' => ' - Cadastro de Serviços',
 			'infos' => $pegaInfos,
 			'servicos' => $this->funcoes->do_getAll('servicos'),
+			'clientes'	=> $this->funcoes->do_getAll('clientes'),
+			'tipoServico'	=> $this->funcoes->do_getAll('tiposervico'),
+
 		);
 
 		$this->load->view('servico',$dados);
@@ -420,7 +423,7 @@ class Servico extends CI_Controller {
 
 		$mensagem = [];
 
-
+		$this->form_validation->set_rules('codigoCliente', 		'codigoCliente', 		'trim|required');
 		$this->form_validation->set_rules('dataServico', 		'dataServico', 			'trim|required');
 		$this->form_validation->set_rules('horaServico', 		'horaServico', 			'trim');
 		$this->form_validation->set_rules('tipoServico', 		'tipoServico', 			'trim|required');
@@ -434,28 +437,55 @@ class Servico extends CI_Controller {
 		$this->form_validation->set_rules('dataCadastro', 		'dataCadastro', 		'trim|required');
 		$this->form_validation->set_rules('usuarioCadastro', 	'usuarioCadastro', 		'trim|required');
 
-
+		$codigoCliente		= $this->input->post('codigoCliente');
 		$dataServico 		= $this->input->post('dataServico');
 		$horaServico 		= $this->input->post('horaServico');
-		$tiposervico 		= $this->input->post('tiposervico');
-		$soliticado 		= $this->input->post('soliticado');
+		$tipoServico 		= $this->input->post('tipoServico');
+		$solicitado 		= $this->input->post('solicitado');
 		$detectado 			= $this->input->post('detectado');
 		$solucao 			= $this->input->post('solucao');
-		$pervisaoConclusao 	= $this->input->post('pervisaoConclusao');
+		$previsaoConclusao 	= $this->input->post('pervisaoConclusao');
 		$dataConclusao 		= $this->input->post('dataConclusao');
 		$status 			= $this->input->post('status');
 		$nomeTecnico 		= $this->input->post('nomeTecnico');
 		$dataCadastro 		= $this->input->post('dataCadastro');
 		$usuarioCadastro 	= $this->input->post('usuarioCadastro');
 
-		
+		if( $this->form_validation->run() == FALSE ){
+			if( validation_errors() ){
+				$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
+				$mensagem[1] = 'alert-danger';
+			}
+		}else{
+			$registra = array(
+				"codigoCliente"		=> $codigoCliente,
+				"dataServico" 		=> $dataServico,
+				"horaServico" 		=> $horaServico,
+				"tipo" 				=> $tipoServico,
+				"solicitacao" 		=> $solicitado,
+				"detectado" 		=> $detectado,
+				"solucao" 			=> $solucao,
+				"previsaoConclusao" => $previsaoConclusao,
+				"dataConclusao" 	=> $dataConclusao,
+				"status" 			=> $status,
+				"nomeTecnico" 		=> $nomeTecnico,
+				"dataCadastro" 		=> $dataCadastro,
+				"usuarioCadastro" 	=> $usuarioCadastro,
+			);
+
+			$this->funcoes->do_insert($registra, 'servicos');
+
+			$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um Serviço!';
+			$mensagem[1] = 'alert-success';
+		}
 
 		$dados = array(
-			'tela' => 'novoservico',
-			'titulo' => 'Novo Serviço',
+			'tela' 		=> 'novoservico',
+			'titulo' 	=> 'Novo Serviço',
 			'descricao' => ' - Cadastro de um novo serviço',
-			'infos' => $pegaInfos,
-			'servicos' => $tipoServicoCad,
+			'infos' 	=> $pegaInfos,
+			'servicos' 	=> $tipoServicoCad,
+			'mensagem' 	=> $mensagem,
 		);
 
 		$this->load->view('servico',$dados);

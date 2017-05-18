@@ -64,6 +64,24 @@
 <div class="col-md-5">
   <?php echo form_open(); ?>
 
+<?php 
+  if( $mensagem ){
+    echo '<div class="alert '.$mensagem[1].' alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  '.$mensagem[0].'</div>';
+  }
+?>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Cliente:</label>
+    <?php 
+      $opcoes = array(
+        $cliente->id => $cliente->nome,
+      );
+    ?>
+    <?php  echo form_dropdown('codigoCliente', $opcoes, '', array('class'=>'form-control', 'readonly'=>'readonly')  ); ?>
+  </div>
+
   <div class="form-group">
     <label for="exampleInputEmail1">Data do Serviço:</label>
     <?php echo form_input('dataServico', '' ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>

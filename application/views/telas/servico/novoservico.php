@@ -21,22 +21,48 @@
 
 ?>
 
-<h1>id do link =><?php echo $id; ?></h1>
-<h3>id do cliente => <?php echo $cliente->id; ?></h3>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><?php echo $cliente->nome; ?></h3>
+      </div>
+      <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="<?= base_url(); ?>assets/dist/img/user.png" class="img-circle img-responsive"> </div>
+              
+            <div class=" col-md-9 col-lg-9 "> 
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>Nome:</td>
+                    <td><?php echo $cliente->nome; ?></td>
+                  </tr>
+                  <tr>
+                    <td>Telefone:</td>
+                    <td><?php echo $cliente->telefone; ?></td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td><?php echo $cliente->cpf; ?></td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td><?php echo $cliente->email; ?></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>            
+    </div>
+</div>
+
+
+
 
 
 <div class="col-md-5">
   <?php echo form_open(); ?>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Usuário Cadastro:</label>
-    <?php 
-      $opcoes = array(
-        $cliente->id => $cliente->nome,
-      );
-    ?>
-    <?php  echo form_dropdown('codigoCliente', $opcoes, '', array('class'=>'form-control', 'readonly'=>'readonly')  ); ?>
-  </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Data do Serviço:</label>
@@ -69,6 +95,7 @@
         'soliticado', 
         '' ,
         array( 'class'=>'form-control col-md-3',
+                'required'=>'required',
           ) 
       ); 
     ?>
@@ -148,14 +175,12 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">Usuário Cadastro:</label>
-    <?php echo form_input(
-        'usuarioCadastro', 
-        $infos[0]->nome ,
-        array(  'class'=>'form-control col-md-3',
-                'readonly'=>'readonly',
-          ) 
-      ); 
+    <?php 
+      $opcoes = array(
+        $infos[0]->id => $infos[0]->nome,
+      );
     ?>
+    <?php  echo form_dropdown('usuarioCadastro', $opcoes, '', array('class'=>'form-control', 'readonly'=>'readonly')  ); ?>
   </div>
 
   <br><br>

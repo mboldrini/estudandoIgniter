@@ -415,14 +415,47 @@ class Servico extends CI_Controller {
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
 		$pegaInfos = $this->usuario->pegaUsuario($nome);
 
-		$servicosCadastrados = $this->funcoes->mostraTiposServicos();
+		// lista os servicos cadastrados
+		$tipoServicoCad = $this->funcoes->mostraTiposServicos();
+
+		$mensagem = [];
+
+
+		$this->form_validation->set_rules('dataServico', 		'dataServico', 			'trim|required');
+		$this->form_validation->set_rules('horaServico', 		'horaServico', 			'trim');
+		$this->form_validation->set_rules('tipoServico', 		'tipoServico', 			'trim|required');
+		$this->form_validation->set_rules('soliticado', 		'soliticado', 			'trim|required');
+		$this->form_validation->set_rules('detectado', 			'detectado', 			'trim');
+		$this->form_validation->set_rules('solucao', 			'solucao', 				'trim');
+		$this->form_validation->set_rules('pervisaoConclusao', 	'pervisaoConclusao',	'trim');
+		$this->form_validation->set_rules('dataConclusao', 		'dataConclusao', 		'trim');
+		$this->form_validation->set_rules('status', 			'status', 				'trim');
+		$this->form_validation->set_rules('nomeTecnico', 		'nomeTecnico', 			'trim');
+		$this->form_validation->set_rules('dataCadastro', 		'dataCadastro', 		'trim|required');
+		$this->form_validation->set_rules('usuarioCadastro', 	'usuarioCadastro', 		'trim|required');
+
+
+		$dataServico 		= $this->input->post('dataServico');
+		$horaServico 		= $this->input->post('horaServico');
+		$tiposervico 		= $this->input->post('tiposervico');
+		$soliticado 		= $this->input->post('soliticado');
+		$detectado 			= $this->input->post('detectado');
+		$solucao 			= $this->input->post('solucao');
+		$pervisaoConclusao 	= $this->input->post('pervisaoConclusao');
+		$dataConclusao 		= $this->input->post('dataConclusao');
+		$status 			= $this->input->post('status');
+		$nomeTecnico 		= $this->input->post('nomeTecnico');
+		$dataCadastro 		= $this->input->post('dataCadastro');
+		$usuarioCadastro 	= $this->input->post('usuarioCadastro');
+
+		
 
 		$dados = array(
 			'tela' => 'novoservico',
 			'titulo' => 'Novo Serviço',
 			'descricao' => ' - Cadastro de um novo serviço',
 			'infos' => $pegaInfos,
-			'servicos' => $servicosCadastrados,
+			'servicos' => $tipoServicoCad,
 		);
 
 		$this->load->view('servico',$dados);

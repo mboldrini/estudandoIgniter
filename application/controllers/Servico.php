@@ -372,6 +372,7 @@ class Servico extends CI_Controller {
 			'titulo' => 'Serviços',
 			'descricao' => ' - Cadastro de Serviços',
 			'infos' => $pegaInfos,
+			'servicos' => $this->funcoes->do_getAll('servicos'),
 		);
 
 		$this->load->view('servico',$dados);

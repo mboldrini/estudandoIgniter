@@ -148,13 +148,17 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">Usuário Cadastro:</label>
-    <?php 
-      $opcoes = array(
-        $infos[0]->id => $infos[0]->nome,
-      );
+    <?php echo form_input(
+        'usuarioCadastro', 
+        $infos[0]->nome ,
+        array(  'class'=>'form-control col-md-3',
+                'readonly'=>'readonly',
+          ) 
+      ); 
     ?>
-    <?php  echo form_dropdown('usuarioCadastro', $opcoes, '', array('class'=>'form-control', 'readonly'=>'readonly')  ); ?>
   </div>
+
+  <br><br>
 
   <button type="submit" class="btn btn-primary">Cadastrar</button>
 

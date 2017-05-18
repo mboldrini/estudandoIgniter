@@ -427,7 +427,7 @@ class Servico extends CI_Controller {
 		$this->form_validation->set_rules('dataServico', 		'dataServico', 			'trim|required');
 		$this->form_validation->set_rules('horaServico', 		'horaServico', 			'trim');
 		$this->form_validation->set_rules('tipoServico', 		'tipoServico', 			'trim|required');
-		$this->form_validation->set_rules('soliticado', 		'soliticado', 			'trim|required');
+		$this->form_validation->set_rules('solicitado', 		'solicitado', 			'trim|required');
 		$this->form_validation->set_rules('detectado', 			'detectado', 			'trim');
 		$this->form_validation->set_rules('solucao', 			'solucao', 				'trim');
 		$this->form_validation->set_rules('pervisaoConclusao', 	'pervisaoConclusao',	'trim');
@@ -486,6 +486,91 @@ class Servico extends CI_Controller {
 			'infos' 	=> $pegaInfos,
 			'servicos' 	=> $tipoServicoCad,
 			'mensagem' 	=> $mensagem,
+		);
+
+		$this->load->view('servico',$dados);
+
+	}
+
+	public function editarServico(){
+
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
+		# pega o nome do usuario que tem na session e passa >
+		$nome = $this->session->userdata('username');
+		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
+		$pegaInfos = $this->usuario->pegaUsuario($nome);
+
+		// lista os servicos cadastrados
+		$tipoServicoCad = $this->funcoes->mostraTiposServicos();
+
+		$mensagem = [];
+
+		// $this->form_validation->set_rules('codigoCliente', 		'codigoCliente', 		'trim|required');
+		// $this->form_validation->set_rules('dataServico', 		'dataServico', 			'trim|required');
+		// $this->form_validation->set_rules('horaServico', 		'horaServico', 			'trim');
+		// $this->form_validation->set_rules('tipoServico', 		'tipoServico', 			'trim|required');
+		// $this->form_validation->set_rules('soliticado', 		'soliticado', 			'trim|required');
+		// $this->form_validation->set_rules('detectado', 			'detectado', 			'trim');
+		// $this->form_validation->set_rules('solucao', 			'solucao', 				'trim');
+		// $this->form_validation->set_rules('pervisaoConclusao', 	'pervisaoConclusao',	'trim');
+		// $this->form_validation->set_rules('dataConclusao', 		'dataConclusao', 		'trim');
+		// $this->form_validation->set_rules('status', 			'status', 				'trim');
+		// $this->form_validation->set_rules('nomeTecnico', 		'nomeTecnico', 			'trim');
+		// $this->form_validation->set_rules('dataCadastro', 		'dataCadastro', 		'trim|required');
+		// $this->form_validation->set_rules('usuarioCadastro', 	'usuarioCadastro', 		'trim|required');
+
+		// $codigoCliente		= $this->input->post('codigoCliente');
+		// $dataServico 		= $this->input->post('dataServico');
+		// $horaServico 		= $this->input->post('horaServico');
+		// $tipoServico 		= $this->input->post('tipoServico');
+		// $solicitado 		= $this->input->post('solicitado');
+		// $detectado 			= $this->input->post('detectado');
+		// $solucao 			= $this->input->post('solucao');
+		// $previsaoConclusao 	= $this->input->post('pervisaoConclusao');
+		// $dataConclusao 		= $this->input->post('dataConclusao');
+		// $status 			= $this->input->post('status');
+		// $nomeTecnico 		= $this->input->post('nomeTecnico');
+		// $dataCadastro 		= $this->input->post('dataCadastro');
+		// $usuarioCadastro 	= $this->input->post('usuarioCadastro');
+
+		// if( $this->form_validation->run() == FALSE ){
+		// 	if( validation_errors() ){
+		// 		$mensagem[0] = '<strong>Opa!</strong> Algo de errado aconteceu! ' . validation_errors();
+		// 		$mensagem[1] = 'alert-danger';
+		// 	}
+		// }else{
+		// 	$registra = array(
+		// 		"codigoCliente"		=> $codigoCliente,
+		// 		"dataServico" 		=> $dataServico,
+		// 		"horaServico" 		=> $horaServico,
+		// 		"tipo" 				=> $tipoServico,
+		// 		"solicitacao" 		=> $solicitado,
+		// 		"detectado" 		=> $detectado,
+		// 		"solucao" 			=> $solucao,
+		// 		"previsaoConclusao" => $previsaoConclusao,
+		// 		"dataConclusao" 	=> $dataConclusao,
+		// 		"status" 			=> $status,
+		// 		"nomeTecnico" 		=> $nomeTecnico,
+		// 		"dataCadastro" 		=> $dataCadastro,
+		// 		"usuarioCadastro" 	=> $usuarioCadastro,
+		// 	);
+
+		// 	$this->funcoes->do_insert($registra, 'servicos');
+
+		// 	$mensagem[0] = '<strong>Parabéns!</strong> Você cadastrou um Serviço!';
+		// 	$mensagem[1] = 'alert-success';
+		// }
+
+		$dados = array(
+			'tela' 		=> 'editarServico',
+			'titulo' 	=> 'Editar Serviço',
+			'descricao' => ' - Edição de Serviço Cadastrado',
+			'infos' 	=> $pegaInfos,
+			'mensagem' 	=> $mensagem,
+			'tipoServico'=> $this->funcoes->do_getAll('tiposervico'),
 		);
 
 		$this->load->view('servico',$dados);

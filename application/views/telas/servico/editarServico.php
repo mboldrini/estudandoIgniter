@@ -13,11 +13,12 @@
 <?php 
 
   $id = $this->uri->segment(3);
-  $tabela = 'clientes';
 
-  $cliente = $this->funcoes->do_get($id, $tabela);
+  $servico = $this->funcoes->do_get($id, 'servicos');
 
-  $tipoServico = $this->funcoes->do_getAll('tiposervico');
+  $idCli = $servico->codigoCliente;
+
+  $cliente = $this->funcoes->do_get( $idCli, 'clientes');
 
 ?>
 
@@ -72,26 +73,17 @@
   }
 ?>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Cliente:</label>
-    <?php 
-      $opcoes = array(
-        $cliente->id => $cliente->nome,
-      );
-    ?>
-    <?php  echo form_dropdown('codigoCliente', $opcoes, '', array('class'=>'form-control', 'readonly'=>'readonly')  ); ?>
-  </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Data do Serviço:</label>
-    <?php echo form_input('dataServico', '' ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
+    <?php echo form_input('dataServico', $servico->dataServico ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Hora do Serviço:</label>
     <?php echo form_input(
         'horaServico', 
-        '' ,
+        $servico->horaServico ,
         array( 'class'=>'form-control col-md-3',
           ) 
       ); 
@@ -101,17 +93,21 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Tipo de Serviço:</label>
     <select name="tipoServico" class="form-control"> 
-      <?php foreach($tipoServico as $key => $value){ ?>
-        <option value="<?php echo $value->id; ?>"><?php echo $value->descricao; ?></option>
-      <?php } ?>
+      <?php foreach( $tipoServico as $serv): ?>
+        <?php if( $serv->id == $servico->tipo ){ ?>
+          <option value="<?php echo $serv->id; ?>" selected><?php echo $serv->descricao; ?></option>
+        <?php }else{ ?>
+          <option value="<?php echo $serv->id; ?>"><?php echo $serv->descricao; ?></option>
+        <?php } ?>
+      <?php endforeach; ?>
     </select>
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Solicitação:</label>
     <?php echo form_textarea(
-        'solicitado', 
-        '' ,
+        'soliticado', 
+        $servico->solicitacao ,
         array( 'class'=>'form-control col-md-3',
                 'required'=>'required',
           ) 
@@ -187,19 +183,10 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1">Data de Cadastro:</label>
-    <?php date_default_timezone_set('America/Sao_Paulo'); $date = date('d-m-Y'); ?>
-    <?php echo form_input('dataCadastro', $date ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly' ) ); ?>
+    <?php echo form_input('dataCadastro', $servico->dataCadastro ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly' ) ); ?>
   </div>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Usuário Cadastro:</label>
-    <?php 
-      $opcoes = array(
-        $infos[0]->id => $infos[0]->nome,
-      );
-    ?>
-    <?php  echo form_dropdown('usuarioCadastro', $opcoes, '', array('class'=>'form-control', 'readonly'=>'readonly')  ); ?>
-  </div>
+
 
   <br><br>
 

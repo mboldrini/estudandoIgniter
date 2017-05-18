@@ -46,8 +46,8 @@
               <td><?php echo $servico->dataCadastro; ?></td>
               <td><?php echo $servico->nomeTecnico; ?></td>
               <td>
-                <a class="btn btn-primary" href="" role="button">Editar</a>
-                <a class="btn btn-danger" href="" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');">Excluir</a>
+                <a class="btn btn-primary" href="<?= base_url('servico/editarServico/' . $servico->id) ?>" role="button">Editar</a>
+                <a class="btn btn-danger" href="<?= base_url('servico/excluirServico/' . $servico->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');">Excluir</a>
               </td>
             </tr>
           <?php endforeach; ?>

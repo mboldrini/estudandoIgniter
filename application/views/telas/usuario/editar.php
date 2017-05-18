@@ -9,6 +9,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4">
+
+    <?php 
+      $id = $this->uri->segment(3);
+      $usuario = $this->funcoes->do_get($id, 'users')
+    ?>
       
       <?php echo form_open(); ?>
 
@@ -20,40 +25,34 @@
         }
       ?>
 
+        <div class="form-group">
+          <label for="exampleInputEmail1">ID:</label>
+          <?php echo form_input('id', $usuario->id ,array( 'class'=>'form-control col-md-3', 'required'=>'required', 'readonly'=>'readonly') ); ?>
+        </div>
 
         <div class="form-group">
           <label for="exampleInputEmail1">Nome:</label>
-          <?php echo form_input('nome', '' ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
+          <?php echo form_input('nome', $usuario->nome ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
         </div>
 
         <div class="form-group">
           <label for="exampleInputEmail1">Sobrenome:</label>
-          <?php echo form_input('sobrenome', '' ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
+          <?php echo form_input('sobrenome', $usuario->sobrenome ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
         </div>
 
         <div class="form-group">
           <label for="exampleInputEmail1">Descrição (cargo):</label>
-          <?php echo form_input('descricao', '' ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
+          <?php echo form_input('descricao', $usuario->descricao ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
         </div>
 
         <div class="form-group">
           <label for="exampleInputEmail1">Usuário:</label>
-          <?php echo form_input('user', '' ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
+          <?php echo form_input('username', $usuario->username ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
         </div>
 
-        <div class="form-group">
-          <label for="exampleInputEmail1">Senha:</label>
-          <?php echo form_input('password', '' ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
-        </div>
-
-    <!--    <div class="form-group">
-          <label for="exampleInputEmail1">Confirmação de Senha:</label>
-          <?php echo form_input('passwordconfirm', '' ,array( 'class'=>'form-control col-md-3', 'required'=>'required') ); ?>
-        </div> -->
-        
         <br><br>
 
-        <button type="submit" class="btn btn-primary">Cadastrar Usuário</button>
+        <button type="submit" class="btn btn-primary">Editar Usuário</button>
 
       <?php form_close(); ?>
 

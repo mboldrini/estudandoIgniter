@@ -19,7 +19,6 @@
         <thead>
           <tr>
               <th>ID</th>
-              <th>Perfil</th>
               <th>Usuario</th>
               <th>Nome</th>
               <th>Sobrenome</th>
@@ -29,22 +28,41 @@
         </thead>
         <tbody>
           <?php foreach( $usuarios as $usuario ): ?>
-            <tr>
-              <td><?php echo $usuario->id; ?></td>
-              <td><?php echo $usuario->perfil ?></td>
-              <td>
-                <span class="label label-default">
-                  <?php echo $usuario->username; ?>                    
-                </span>
-              </td>
-              <td><?php echo $usuario->nome; ?></td>
-              <td><?php echo $usuario->sobrenome; ?></td>
-              <td><?php echo $usuario->descricao; ?></td>
-              <td>
-                <a class="btn btn-primary" href="#" role="button">Editar</a>
-                <a class="btn btn-danger" href="#" role="button">Excluir</a>
-              </td>
-            </tr>
+
+            <?php if( $usuario->id == $infos[0]->id ){ ?>
+              <tr>
+                <td><?php echo $usuario->id; ?></td>
+                <td>
+                  <span class="label label-primary">
+                    <?php echo $usuario->username; ?>                    
+                  </span>
+                </td>
+                <td><?php echo $usuario->nome; ?></td>
+                <td><?php echo $usuario->sobrenome; ?></td>
+                <td><?php echo $usuario->descricao; ?></td>
+                <td>
+                  <p>Você não pode editar a sí mesmo</p>          
+                </td>
+              </tr>
+            <?php }else{ ?>
+              <tr>
+                <td><?php echo $usuario->id; ?></td>
+                <td>
+                  <span class="label label-primary">
+                    <?php echo $usuario->username; ?>                    
+                  </span>
+                </td>
+                <td><?php echo $usuario->nome; ?></td>
+                <td><?php echo $usuario->sobrenome; ?></td>
+                <td><?php echo $usuario->descricao; ?></td>
+                <td>
+                  <a class="btn btn-primary" href="<?= base_url('user/editar/' . $usuario->id) ?>" role="button">Editar</a>
+                  <a class="btn btn-danger" href="<?= base_url('user/excluir/' . $usuario->id) ?>" role="button" onclick="return confirm('Tem certeza que deseja excluir esse registro?');">Excluir</a>
+                </td>
+              </tr>
+            <?php } ?>
+
+            
           <?php endforeach; ?>
         </tbody>
     </table>

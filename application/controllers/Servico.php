@@ -19,6 +19,10 @@ class Servico extends CI_Controller {
 
 	public function tipo(){
 
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
@@ -104,6 +108,10 @@ class Servico extends CI_Controller {
 
 	public function editarTipo(){
 
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
@@ -164,6 +172,10 @@ class Servico extends CI_Controller {
 
 	public function valor(){
 
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
@@ -183,6 +195,10 @@ class Servico extends CI_Controller {
 	}// valor servico
 
 	public function novoValor(){
+
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
 
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
@@ -250,6 +266,10 @@ class Servico extends CI_Controller {
 
 	public function editarValor(){
 
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
@@ -312,6 +332,10 @@ class Servico extends CI_Controller {
 
 	public function excluirValor(){
 
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
+
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
 		# pega o nome da variavel aqui de cima, e faz uma pesquisa completa no banco de dados 'user'
@@ -333,6 +357,10 @@ class Servico extends CI_Controller {
 
 
 	public function servicos(){
+
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
 
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
@@ -376,6 +404,10 @@ class Servico extends CI_Controller {
 
 
 	public function novoservico(){
+
+		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'administrador'){
+			redirect(base_url().'login');
+		}
 
 		# pega o nome do usuario que tem na session e passa >
 		$nome = $this->session->userdata('username');
